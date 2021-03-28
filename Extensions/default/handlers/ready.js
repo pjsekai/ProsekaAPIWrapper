@@ -15,7 +15,7 @@ module.exports = async client => {
 		)
 	);
 	require('../loaders/loadCommands')(client);
-	//require('../loaders/loadAssets');
+
 	await mongoose.connect(
 		process.env.MongoURL,
 		{
@@ -25,12 +25,6 @@ module.exports = async client => {
 			useCreateIndex: true
 		}
 	);
-  /*let rxy = await userModel.findOne({
-    discordId:"455421277843357708"
-  })
-  const data = rxy.sekaiRanking
-  let masterData2 = JSON.stringify(data, null, ' ')
-fs.writeFileSync('output2.json', masterData2);*/
 	console.log(
 		chalk.bgBlue.bold(
 			`MongoDB | READY ${chalk.green(
