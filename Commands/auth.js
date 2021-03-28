@@ -15,12 +15,13 @@ instance.defaults.headers.common['x-api-token'] = process.env.API_TOKEN
 module.exports = {
 	name: 'auth',
 	aliases: [],
-	disabled: false,
+	disabled: true,
 	cooldown: 0,
 	ownerOnly: true,
 	guild: false,
 
 	async execute(message, args, client) {
+
 
 		let auth_embed = new MessageEmbed();
 
@@ -35,6 +36,10 @@ module.exports = {
 		if (!auth_info) {
 			return message.reply("`ps!register`を先に使用してください")
 		}
+    
+    if(auth_info.limit > 4){
+      return message.reply("複数回認証に失敗したため認証できません")
+    }
 
 		let NowEventId;
 		if (Date.now() < EVENT_NAME[EVENT_NAME.length - 1]["startAt"]) {
@@ -58,6 +63,8 @@ module.exports = {
 		}
 
 		if (response.data.data.userProfile.word != auth_info.string) {
+      auth_info.limit += 1;
+      await auth_info.save()
 			return message.reply("認証に失敗しました。")
 		}
 

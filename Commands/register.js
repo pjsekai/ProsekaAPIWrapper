@@ -54,24 +54,7 @@ module.exports = {
        })
 
        await auth.save();
-
-/*
-        try {
-          var response = await instance.get(`/user/${args[0]}/profile`)
-          console.log(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-	     
-	    USER = new userModel({
-          guildId: message.guild.id,
-          discordId: message.author.id,
-          sekaiId: args[0],
-          limit: 1,
-          sekaiProfile: response.data,
-	    })
-	    
-	    await USER.save();*/
+       
 	   }else{
 	     return message.channel.send('既に登録されています。')
 	   }
