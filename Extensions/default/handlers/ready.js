@@ -4,6 +4,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const userModel = require('./../../../Models/user')
 const axios = require('axios')
+const { MessageEmbed } = require('discord.js');
 
 module.exports = async client => {
 	console.log(

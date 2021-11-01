@@ -10,12 +10,12 @@ const {
 const instance = axios.create({
 	baseURL: process.env.BASE_API_URL
 });
-instance.defaults.headers.common['x-api-token'] = process.env.API_TOKEN
+instance.defaults.headers.common['X-API-TOKEN'] = process.env.API_TOKEN
 
 module.exports = {
 	name: 'auth',
 	aliases: [],
-	disabled: true,
+	disabled: false,
 	cooldown: 0,
 	ownerOnly: true,
 	guild: false,
